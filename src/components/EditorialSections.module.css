@@ -1,0 +1,130 @@
+.editorialSection,
+.contact {
+  display: grid;
+  grid-template-columns: 0.62fr 1.38fr;
+  gap: 9vw;
+  padding: clamp(120px, 16vw, 220px) var(--pad);
+  border-bottom: 1px solid var(--line);
+}
+
+.sectionLabel,
+.rowLabel,
+.metric span,
+.contactLinks {
+  font-family: var(--sans);
+  font-size: 10px;
+  line-height: 1.25;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.sectionLabel,
+.rowLabel { color: var(--muted); }
+.sectionLabel { padding-top: 7px; }
+
+.editorialSection h2,
+.contact h2 {
+  margin: 0 0 36px;
+  max-width: 11ch;
+  font-size: clamp(52px, 7.5vw, 118px);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  font-weight: 400;
+}
+
+.row,
+.experienceLead {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.34fr) 1fr;
+  gap: 30px;
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+}
+
+.row p,
+.experienceLead p {
+  margin: 0;
+  max-width: 42ch;
+  color: #d7d9de;
+  font-size: clamp(18px, 1.9vw, 27px);
+  line-height: 1.24;
+}
+
+.editorialSection .row:last-of-type { border-bottom: 1px solid var(--line); }
+.experienceLead { padding-top: 28px; }
+
+.metricGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 38px;
+}
+.metric {
+  min-height: 145px;
+  padding: 18px 0;
+  border-top: 1px solid var(--white);
+}
+.metric strong {
+  display: block;
+  max-width: 8ch;
+  font-size: clamp(27px, 3vw, 48px);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+.metric span { display: block; margin-top: 18px; color: var(--muted); }
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8vw;
+  align-items: end;
+  padding: clamp(110px, 15vw, 210px) var(--pad);
+  border-bottom: 1px solid var(--line);
+}
+.about h2 {
+  margin: 0;
+  max-width: 7ch;
+  font-size: clamp(60px, 10vw, 150px);
+  line-height: 0.78;
+  letter-spacing: -0.05em;
+  font-weight: 400;
+}
+.aboutCopy { padding-top: 18px; border-top: 1px solid var(--white); }
+.aboutCopy p {
+  margin: 0;
+  max-width: 34ch;
+  font-size: clamp(20px, 2.1vw, 30px);
+  line-height: 1.2;
+}
+
+.contact h2 { max-width: 8ch; }
+.contactNote {
+  margin: 0;
+  max-width: 35ch;
+  color: #d7d9de;
+  font-size: clamp(20px, 2vw, 30px);
+  line-height: 1.2;
+}
+.contactLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 28px;
+  margin-top: 42px;
+  color: var(--muted);
+}
+.contactLinks a { color: var(--white); }
+
+@media (max-width: 960px) {
+  .editorialSection,
+  .contact,
+  .about { grid-template-columns: 1fr; gap: 48px; }
+  .metricGrid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .row,
+  .experienceLead { grid-template-columns: 1fr; gap: 10px; }
+  .metricGrid { grid-template-columns: 1fr; }
+  .metric { min-height: 110px; }
+}

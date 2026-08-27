@@ -1,0 +1,756 @@
+.trace {
+  --klein: #1748ff;
+  --klein-soft: rgba(23, 72, 255, 0.18);
+  --klein-faint: rgba(23, 72, 255, 0.08);
+  --crash-red: #b3262e;
+  --crash-red-soft: rgba(179, 38, 46, 0.18);
+  --trace-line: rgba(246, 247, 248, 0.13);
+  --trace-line-strong: rgba(246, 247, 248, 0.26);
+  min-height: 0;
+  display: grid;
+  grid-template-rows: 64px minmax(0, 1fr);
+  border-left: 1px solid var(--trace-line);
+  border-right: 1px solid var(--trace-line);
+}
+
+.micro,
+.modeTabs,
+.technicalNote,
+.workerButtons,
+.replayButton,
+.rngButtons,
+.inputGrid,
+.parallelControls,
+.workerLane,
+.flowLabel,
+.orderStrip,
+.canonicalStrip,
+.treeHint,
+.commitPipeline,
+.recoveryBlocks,
+.recoveryActions,
+.rngStatusRow,
+.compareLabel,
+.changedState,
+.stableState {
+  font-family: var(--sans);
+}
+
+.micro {
+  font-size: 9px;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.traceHeader {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(250px, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--trace-line);
+}
+
+.traceTitle {
+  min-width: 0;
+}
+
+.traceTitle > strong {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--serif);
+  font-size: clamp(18px, 1.5vw, 26px);
+  line-height: 1;
+  font-weight: 400;
+}
+
+.modeTabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.modeTabs button,
+.workerButtons button,
+.replayButton,
+.rngButtons button,
+.crashButton,
+.recoverButton {
+  appearance: none;
+  border: 1px solid var(--trace-line);
+  background: #000;
+  color: #7d828b;
+  cursor: pointer;
+  transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+}
+
+.modeTabs button {
+  min-height: 34px;
+  padding: 0 10px;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.modeTabs button span {
+  margin-right: 7px;
+  color: #4c5159;
+}
+
+.modeTabs button:hover,
+.workerButtons button:hover,
+.replayButton:hover,
+.rngButtons button:hover,
+.crashButton:hover,
+.recoverButton:hover {
+  color: #fff;
+  border-color: var(--trace-line-strong);
+}
+
+.modeTabs .modeActive,
+.controlActive,
+.rngButtons button:focus-visible,
+.modeTabs button:focus-visible,
+.workerButtons button:focus-visible,
+.replayButton:focus-visible,
+.crashButton:focus-visible,
+.recoverButton:focus-visible {
+  color: #fff;
+  border-color: var(--klein);
+  background: var(--klein-faint);
+  outline: none;
+}
+
+.modeTabs .modeActive span {
+  color: var(--klein);
+}
+
+.traceBody {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(290px, 330px);
+}
+
+.visualStage {
+  min-width: 0;
+  min-height: 0;
+  position: relative;
+  padding: clamp(14px, 1.6vw, 24px);
+  border-right: 1px solid var(--trace-line);
+}
+
+.technicalNote {
+  min-width: 0;
+  min-height: 0;
+  padding: clamp(18px, 2vw, 30px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.012);
+}
+
+.noteNumber {
+  color: var(--klein);
+  font-size: 9px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.technicalNote h2 {
+  margin: 16px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(23px, min(2.1vw, 3.8vh), 36px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+
+.technicalNote p {
+  margin: 18px 0 0;
+  color: #b9bdc5;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.technicalNote strong {
+  color: #fff;
+  font-weight: 400;
+}
+
+.noteDetail {
+  color: #8f949d !important;
+}
+
+.formula {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid var(--trace-line);
+  display: grid;
+  gap: 7px;
+  color: #d9dce1;
+  font-family: var(--serif);
+  font-size: 14px;
+}
+
+/* 01 / Randomness */
+.rngScene {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 14px;
+}
+
+.rngControlsCard,
+.rngPanel,
+.compareCard {
+  min-width: 0;
+  border: 1px solid var(--trace-line);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.rngControlsCard {
+  padding: 16px;
+}
+
+.inputGrid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.inputGrid label {
+  display: grid;
+  gap: 5px;
+}
+
+.inputGrid span {
+  color: #7d828b;
+  font-size: 9px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.inputGrid input {
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--trace-line);
+  background: #000;
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 12px;
+}
+
+.rngButtons {
+  margin-top: 12px;
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.rngButtons button,
+.workerButtons button,
+.replayButton,
+.crashButton,
+.recoverButton {
+  min-height: 34px;
+  padding: 0 11px;
+  font-size: 9px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.rngPanels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.rngPanel {
+  padding: 16px;
+}
+
+.rngPanelActive {
+  border-color: var(--klein);
+  background: linear-gradient(180deg, rgba(23, 72, 255, 0.08), rgba(23, 72, 255, 0.03));
+}
+
+.rngPanel strong {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--serif);
+  font-size: clamp(34px, 3vw, 54px);
+  line-height: 1;
+  font-weight: 400;
+}
+
+.rngPanel p {
+  margin: 12px 0 0;
+  color: #9ba0a8;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.streamValues {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.streamValues span {
+  min-width: 0;
+  padding: 10px 4px;
+  border-bottom: 1px solid var(--klein);
+  font-family: var(--serif);
+  font-size: clamp(17px, 1.45vw, 24px);
+  text-align: center;
+}
+
+.rngStatusRow {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #8a8f97;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.rngStatusRow strong {
+  font-family: var(--sans);
+  font-size: 10px;
+  line-height: 1.25;
+}
+
+.rngCompare {
+  min-height: 0;
+}
+
+.compareCard {
+  padding: 16px;
+  height: 100%;
+}
+
+.compareColumns {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.compareLabel {
+  display: block;
+  color: #8b9098;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.stableState,
+.changedState {
+  display: block;
+  margin-top: 10px;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.stableState {
+  color: var(--klein);
+}
+
+.changedState {
+  color: var(--crash-red);
+}
+
+/* 02 / Parallelism */
+.parallelScene {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 18px;
+}
+
+.parallelControls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.workerButtons {
+  display: flex;
+  gap: 6px;
+}
+
+.workerLanes {
+  display: grid;
+  gap: 14px;
+}
+
+.workerLane {
+  min-width: 0;
+  border: 1px solid var(--trace-line);
+  padding: 12px;
+}
+
+.workerLaneId {
+  color: #8f949c;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.workerLaneBlocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.workerLaneBlocks span,
+.orderStrip span,
+.canonicalStrip span,
+.recoveryBlocks > div {
+  min-width: 0;
+  border: 1px solid var(--trace-line);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.workerLaneBlocks span {
+  min-width: 50px;
+  padding: 8px 10px;
+  color: #666b73;
+  font-size: 11px;
+  text-align: center;
+}
+
+.workerDone {
+  border-color: var(--klein) !important;
+  color: #fff !important;
+  background: var(--klein-faint) !important;
+}
+
+.flowRows {
+  display: grid;
+  grid-template-rows: auto 22px auto;
+  gap: 14px;
+}
+
+.flowLabel {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #838892;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.orderStrip,
+.canonicalStrip {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.orderStrip span,
+.canonicalStrip span {
+  padding: 13px 8px;
+  color: #61666d;
+  font-size: 12px;
+  text-align: center;
+  transition: transform 240ms ease, border-color 240ms ease, color 240ms ease, background 240ms ease;
+}
+
+.orderVisible,
+.canonicalPlaced {
+  border-color: var(--klein) !important;
+  color: #fff !important;
+  background: var(--klein-faint) !important;
+  transform: translateY(-3px);
+}
+
+.snapArrow {
+  align-self: center;
+  justify-self: center;
+  color: var(--klein);
+  font-size: 24px;
+}
+
+/* 03 / Reduction */
+.reductionScene {
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.treeCanvas {
+  position: relative;
+  min-height: 0;
+  height: 100%;
+  background: #000;
+}
+
+.treeSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.treeEdges {
+  fill: none;
+  stroke: rgba(23, 72, 255, 0.26);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.treeEdges path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 440ms ease, stroke 220ms ease;
+}
+
+.treeEdgesLive {
+  stroke: var(--klein);
+}
+
+.treeEdgesLive path {
+  stroke-dashoffset: 0;
+}
+
+.treePosition {
+  position: absolute;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.treeNode {
+  width: 110px;
+  min-height: 56px;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border: 1px solid rgba(246, 247, 248, 0.18);
+  background: #000;
+  color: #d3d7de;
+}
+
+button.treeNode {
+  appearance: none;
+  cursor: pointer;
+}
+
+.treeNode span {
+  color: #9ea3ad;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.treeNode strong {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.treeNodeActive {
+  border-color: var(--klein);
+  color: #fff;
+  background: rgba(23, 72, 255, 0.06);
+}
+
+.treeRoot {
+  width: 126px;
+  min-height: 60px;
+}
+
+.treeHint {
+  color: #6f747d;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* 04 / Recovery */
+.recoveryScene {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 18px;
+}
+
+.commitPipeline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #7e838c;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.commitPipeline div {
+  min-width: 0;
+  flex: 1 1 0;
+  padding: 12px;
+  border: 1px solid var(--trace-line);
+}
+
+.commitPipeline span {
+  display: block;
+  color: #6d727a;
+}
+
+.commitPipeline strong {
+  display: block;
+  margin-top: 4px;
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.recoveryBlocks {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.recoveryBlocks > div {
+  min-height: 72px;
+  padding: 11px 10px;
+  display: grid;
+  align-content: center;
+  gap: 6px;
+}
+
+.recoveryBlocks span {
+  color: #9ea3ad;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.recoveryBlocks strong {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.recoveryCommitted {
+  border-color: var(--klein) !important;
+  background: var(--klein-faint) !important;
+}
+
+.recoveryCommitted strong {
+  color: var(--klein);
+}
+
+.recoveryUncommitted {
+  border-color: rgba(179, 38, 46, 0.54) !important;
+  background: rgba(179, 38, 46, 0.06) !important;
+}
+
+.recoveryUncommitted strong {
+  color: var(--crash-red);
+}
+
+.manifestRow {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 20px;
+  padding: 18px;
+  border: 1px solid var(--trace-line);
+}
+
+.manifestRow strong {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.manifestRow p {
+  margin: 12px 0 0;
+  color: #9ea3ad;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.recoveryActions {
+  display: flex;
+  align-items: center;
+}
+
+.recoverButton {
+  border-color: var(--crash-red);
+  color: #fff;
+  background: var(--crash-red-soft);
+}
+
+@media (max-width: 1180px) {
+  .traceBody {
+    grid-template-columns: 1fr;
+  }
+
+  .technicalNote {
+    border-top: 1px solid var(--trace-line);
+  }
+}
+
+@media (max-width: 960px) {
+  .trace {
+    grid-template-rows: auto auto;
+  }
+
+  .traceHeader {
+    grid-template-columns: 1fr;
+    align-items: start;
+    padding: 14px;
+  }
+
+  .modeTabs {
+    flex-wrap: wrap;
+  }
+
+  .visualStage {
+    padding: 14px;
+  }
+
+  .rngPanels,
+  .compareColumns,
+  .inputGrid,
+  .recoveryBlocks,
+  .orderStrip,
+  .canonicalStrip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .workerLanes,
+  .parallelControls,
+  .commitPipeline,
+  .manifestRow {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .workerButtons,
+  .rngButtons {
+    flex-wrap: wrap;
+  }
+}

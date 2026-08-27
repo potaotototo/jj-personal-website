@@ -1,0 +1,60 @@
+:root {
+  --black: #000;
+  --white: #f6f7f8;
+  --muted: #a9adb5;
+  --line: #292b31;
+  --blue: #0d2350;
+  --blue-bright: #6f96e8;
+  --oxblood: #4b0c15;
+  --pad: clamp(22px, 4vw, 64px);
+  --serif: "Orpheus Pro", "OrpheusPro-Regular", "Iowan Old Style", Baskerville, "Times New Roman", serif;
+  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/*
+  Licensed Orpheus Pro can be self-hosted later. Keep the file out of git unless
+  your licence permits redistribution. If you add it, use font-display: optional
+  to minimise late layout movement:
+
+  @font-face {
+    font-family: "Orpheus Pro";
+    src: url("/fonts/OrpheusPro-Regular.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: optional;
+  }
+*/
+
+* { box-sizing: border-box; }
+html {
+  background: var(--black);
+  scroll-behavior: smooth;
+  scroll-padding-top: 56px;
+}
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--serif);
+  font-weight: 400;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration: none; }
+a:focus-visible,
+button:focus-visible {
+  outline: 1px solid var(--white);
+  outline-offset: 5px;
+}
+::selection { background: var(--white); color: var(--black); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
