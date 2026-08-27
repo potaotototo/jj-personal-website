@@ -116,7 +116,7 @@ export const PROJECTS: readonly Project[] = [
     category: "Systems Behaviour",
     title: "Fault-Tolerant Parallel Monte Carlo",
     introSummary:
-      "A reproducible pricing runtime designed around worker-count independence and crash recovery.",
+      "C++ Monte Carlo pricing with Philox streams, deterministic aggregation and crash recovery.",
     stack: "C++ / Philox / Heston / Andersen QE / deterministic recovery",
     lead:
       "A pricing runtime built around reproducibility and recovery semantics. Randomness, aggregation and persistence are structured so completed work remains valid when worker count or execution order changes.",
@@ -130,7 +130,7 @@ export const PROJECTS: readonly Project[] = [
       { value: "24.6%", label: "speedup vs baseline" },
     ],
     diagram: {
-      caption: "Execution sketch",
+      caption: "Runtime",
       nodes: [
         { title: "Scenario key", meta: "model / seed / block" },
         { title: "Parallel workers", meta: "Philox streams" },
@@ -153,7 +153,7 @@ export const PROJECTS: readonly Project[] = [
     category: "Full-stack",
     title: "TapCare",
     introSummary:
-      "An NFC caregiver platform with household-scoped access and resilient public sticker routing.",
+      "NFC/QR caregiver platform with household-scoped access and Redis-backed deduplication.",
     stack: "Next.js / TypeScript / Prisma / PostgreSQL / Upstash Redis",
     lead:
       "An NFC-triggered support system for caregiver workflows. PostgreSQL owns durable household, assignment and sticker state; Redis is limited to short-lived coordination such as rate limits and duplicate-event suppression.",
@@ -190,7 +190,7 @@ export const PROJECTS: readonly Project[] = [
     category: "Machine Learning",
     title: "Weathering with Phew",
     introSummary:
-      "A weather-warning pipeline with anomaly scoring kept separate from ingestion and serving.",
+      "Weather pipeline with separate ingestion, anomaly scoring and serving.",
     stack: "Python / FastAPI / SQLite / Streamlit / IsolationForest",
     lead:
       "A Singapore weather-warning pipeline that collects station readings, computes neighbourhood gaps and anomaly features, then serves alerts through a small API and dashboard.",

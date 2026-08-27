@@ -192,7 +192,7 @@ export function CinematicIntro() {
           </div>
 
           <div className={styles.status} aria-hidden="true">
-            <span>Scroll to widen the frame</span>
+            <span>Scroll</span>
             <span className={styles.progressTrack}>
               <span style={cinematic ? { transform: `scaleX(${progress})` } : undefined} />
             </span>
