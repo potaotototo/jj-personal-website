@@ -4,21 +4,21 @@ import { ContactSection } from "@/components/ContactSection";
 import { EducationSection } from "@/components/EducationSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
 import { ProjectRail } from "@/components/ProjectRail";
+import { SiteNav } from "@/components/SiteNav";
 
 export default function HomePage() {
   return (
-    <main>
-      <CinematicIntro />
+    <>
+      <SiteNav />
 
-      <AboutSection />
-
-      <EducationSection />
-
-      <ExperienceSection />
-
-      <ProjectRail />
-
-      <ContactSection />
-    </main>
+      <main>
+        <CinematicIntro />
+        <AboutSection />
+        <EducationSection />
+        <ExperienceSection />
+        <ProjectRail />
+        <ContactSection />
+      </main>
+    </>
   );
 }
