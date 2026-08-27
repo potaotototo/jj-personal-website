@@ -7,7 +7,7 @@ export function SiteNav() {
       <a className={styles.brand} href="#top">
         WJ / 26
       </a>
-      <span className={styles.index}>Selected Technical Work</span>
+      <span className={styles.index}></span>
       <div className={styles.links}>
         {NAV_ITEMS.map((item) => (
           <a key={item.href} href={item.href}>
